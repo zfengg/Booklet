@@ -1,0 +1,201 @@
+% !TEX root = ../booklet.tex
+% ------------------------------- misc: prefix ------------------------------- %
+\usepackage{scrhack} % fixes compatibilities
+\usepackage{lastpage} % count total num of pages
+
+% ----------------------------------- math ----------------------------------- %
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\allowdisplaybreaks
+
+% ---------------------------------- layout ---------------------------------- %
+\usepackage[top=2.5cm,bottom=2.5cm,inner=1.5cm,outer=3cm, % margins
+			footskip=1.4cm,headsep=0.8cm,headheight=0.5cm, % header and footer
+%			showframe,
+			]{geometry}
+% \renewcommand{\baselinestretch}{1.5}
+
+% ------------------------------ header & footer ----------------------------- %
+\pagestyle{plain}
+
+% ----------------------------------- lists ---------------------------------- %
+\usepackage{caption}
+\usepackage[shortlabels,inline]{enumitem}
+\setitemize{itemsep=0.6ex}
+
+% ---------------------------------- tables ---------------------------------- %
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{longtable} % tables with multiple pages
+\usepackage{array}
+\renewcommand{\arraystretch}{1.5} % spreadout of cells in tables
+% column types
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}} % left-aligned
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}} % centred
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}} % right-aligned
+
+% ---------------------------------- figures --------------------------------- %
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage{graphicx}
+% cover page
+\usepackage{eso-pic,contour}
+\contourlength{.4pt}
+
+% ------------------------------- fonts & input ------------------------------ %
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage[sfdefault, lf]{carlito} % set font family
+\usepackage{microtype} % improve typography
+
+%% Chinese support by XeLaTeX
+%\usepackage[scheme=plain]{ctex}
+%%\usepackage{xeCJK} % Chinese via xelatex
+%%\setCJKmainfont{SimSun}
+%% \setCJKsansfont{SimSun}
+%% \setCJKmonofont{SimSun}
+
+% --------------------------------- numbering -------------------------------- %
+\setcounter{secnumdepth}{-2} % rm section numbering
+
+% ---------------------------------- colors ---------------------------------- %
+\usepackage{xcolor}
+\definecolor{myorange}{RGB}{255, 117, 40}
+\definecolor{mygray}{RGB}{164, 168, 172}
+\definecolor{mywhite}{RGB}{235, 238, 231}
+%\definecolor{myblue}{RGB}{52, 115, 116}
+%\definecolor{myblue}{RGB}{0, 0, 128} % navy blue
+\definecolor{myblue}{RGB}{0, 71, 171} % Cobalt Blue
+\colorlet{primarycolor}{myblue}
+% set main colors
+\newcommand{\primarycolor}{myblue}
+\newcommand{\secondarycolor}{mywhite}
+% for tables
+\newcommand{\tbg}{gray} % events background
+\newcommand{\tfg}{white} % events foreground (text)
+\newcommand{\tbc}{gray!25} % breaks color for background 
+
+% ---------------------------- chapters & sections --------------------------- %
+\newdimen\mybarpadding
+\mybarpadding=1.5em\relax % horizontal padding between the colored bar and chapter title
+\RedeclareSectionCommand[afterskip=4em plus 1pt minus 1pt,beforeskip=-1pt,level=0,toclevel=0,]{chapter}
+\RedeclareSectionCommand[afterskip=1pt,beforeskip=3pt,level=1,toclevel=1,]{section}
+\renewcommand{\chapterlinesformat}[3]{%
+	\ifthispageodd{% Odd pages have the coloured bar to the left of the chapter title
+		\hfill% Coloured bar fills available width
+		\raisebox{-0.2em}{\makebox[0pt][r]{\textcolor{\primarycolor}{\rule{\paperwidth}{1em}}}}% Coloured bar
+		\hspace{\mybarpadding}% Padding between the chapter title and colour bar
+		\mbox{#3}% Chapter title
+	}{% even pages have the coloured bar to the right of the chapter title
+		\mbox{#3}% Chapter title
+		\hspace{\mybarpadding}% Padding between the chapter title and colour bar
+		\raisebox{-0.2em}{\makebox[0pt][l]{\textcolor{\primarycolor}{\rule{\paperwidth}{1em}}}}% Coloured bar
+	}%
+}
+
+
+% ----------------------- the vertical line in margins ----------------------- %
+\usepackage{ifthen}
+\usepackage[scale=1, angle=0, opacity=1]{background}
+\backgroundsetup{contents={}}
+
+\AddEverypageHook{%
+	\ifthenelse{%
+		\isodd{\thepage} \AND \thepage>1 \AND \NOT \thepage=\pageref{LastPage} % If odd page but not the first or last page
+	}{%
+		\backgroundsetup{
+			color=\secondarycolor, % color of bar
+			position=current page.south east, % position of the bar on the page
+			nodeanchor=south east, % anchor location inside the bar
+			contents={\rule{10pt}{0.66\paperheight}} % Bar width and height
+		}
+	}{}
+	%
+	\ifthenelse{% 
+		\NOT \isodd{\thepage} \AND \NOT \thepage=\pageref{LastPage} % If even page but not the last page
+	}{%
+		\backgroundsetup{
+			color=\secondarycolor, % Bar colour
+			position=current page.south west, % Position of the bar on the page
+			nodeanchor=south west, % Anchor location inside the bar
+			contents={\rule{10pt}{0.66\paperheight}} % Bar width and height
+		}
+	}{}
+	%
+	\BgMaterial % output the background set up above
+}
+
+% -------------------------------- hyperlinks -------------------------------- %
+\usepackage[pdfusetitle,
+			bookmarks=true,
+			pagebackref,
+			hidelinks, % hide boxes surround links
+			colorlinks=false,
+			linkcolor=blue,
+			citecolor=blue,
+			urlcolor=blue]{hyperref}
+
+
+% ---------------------------- categories of talks --------------------------- %
+\newcommand{\circleGeneric}[2]{\tikz[baseline={([yshift=-.8ex]current bounding box.center)}]  \node[circle, inner sep=3pt, minimum size=0.5em, color=black, fill=#1]{\small \bfseries #2};} % tag icon
+% invited speaker
+\newcommand{\colorIS}{myblue!65}
+\newcommand{\IS}[4]{#1 & \cellcolor{\colorIS}IS & {\bfseries#2}\newline #3 & & #4 \\ \hline}
+\newcommand{\tagIS}{\circleGeneric{\colorIS}{IS}}
+% contributed talk
+\newcommand{\colorCT}{white}
+\newcommand{\CT}[4]{#1 & \cellcolor{\colorCT} CT & {\bfseries#2}\newline #3 & & #4 \\ \hline}
+\newcommand{\tagCT}{\circleGeneric{\colorCT}{CT}}
+% keynote lecture
+\newcommand{\colorKL}{myorange!45}
+\newcommand{\KL}[4]{#1 & \cellcolor{\colorKL} KL & {\bfseries#2}\newline #3 & & #4 \\ \hline}
+\newcommand{\tagKL}{\circleGeneric{\colorKL}{KL}}
+% invited talk
+\newcommand{\colorIT}{yellow!25}
+\newcommand{\IT}[4]{#1 & \cellcolor{\colorIT} IT & {\bfseries#2} \newline #3 & & #4 \\ \hline}
+\newcommand{\tagIT}{\circleGeneric{\colorIT}{IT}}
+
+% rows in timetable
+\newcommand{\rowBreak}[2]{ #1 & \cellcolor{\tbc} #2 \\ \hline}
+\newcommand{\rowEvent}[2]{#1 & {\cellcolor{\tbg}\color{\tfg}\bfseries #2} \\ \hline}
+\newcommand{\rowTalk}[4]{\multirow{2}{*}{#1} & #4 \\ & \textbf{#2}, \textit{#3} \\ \hline}
+\newcommand{\rowThick}[2]{& \\ #1 & #2  \\ & \\ \hline}
+\newcommand{\rowTHICK}[2]{\multirow{3}{*}{#1} & \\ & \\ & #2 \\ & \\ & \\ \hline}
+% others
+\newcommand{\tablebreak}[2]{\rowcolor{\tbc} #1 & \multicolumn{4}{c|}{\bfseries #2} \\ \hline }
+\newcommand{\eventtype}[2]{#1 & \multicolumn{4}{c|}{\cellcolor{\tbg}\color{\tfg}\bfseries #2} \\ \hline }
+\newcommand{\tutorial}[4]{#1 & & {\bfseries#2}\newline #3 & & #4 \\\hline}
+\newcommand{\Talk}[4]{\multirow{2}{*}{#1}  & \multicolumn{4}{c|}{#4} \\ & \multicolumn{4}{c|}{\textbf{#2}, \textit{#1}} \\ \hline}
+\newcommand{\TalkBreak}[4]{\pagebreak \hline \multirow{2}{*}{#1}  & \multicolumn{4}{c|}{#4} \\ & \multicolumn{4}{c|}{\textbf{#2}, \textit{#1}} \\ \hline}
+
+% ---------------------------------- objects --------------------------------- %
+% Abstract
+\newcommand{\Abstract}[5][]{
+	\filbreak % avoid pagebreaks
+	
+	{\large \bfseries #2}
+	
+%	\vskip -0.1em
+	
+	{\bfseries \itshape #3}, \textcolor{mygray}{#4} \hfill {#1}
+	
+%	\vskip -0.1em
+	
+	#5 % content
+	\vskip 2em
+} % end of Abstract
+% Participant
+\newcommand{\Participant}[2]{#1 & #2 \\ \hline} % name, affiliation
+% Poster
+\newcommand{\Poster}[3]{
+	\filbreak % avoid page breaks
+	{\large\bfseries #1}\\ % title
+	\hspace*{0.75cm} #2, \textit{#3} % author, affiliation
+}
+
+% ------------------------------- misc: suffix ------------------------------- %
+\usepackage[numbers,sort]{natbib} % automatically sort the citations
+\usepackage{appendix}
+\usepackage{pdfpages} % Required for including a full-page image for the cover

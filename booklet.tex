@@ -1,0 +1,426 @@
+%!TEX TS-program = pdflatex
+% Booklet @ https://github.com/zfengg/Booklet
+%
+%	A simple TeX template to create booklets for conferences.
+%
+% Author: Zhou Feng @ 26/11/2023
+% ---------------------------------------------------------------------------- %
+%                                   preamble                                   %
+% ---------------------------------------------------------------------------- %
+\documentclass[openany,parskip=half,12pt,a4paper,table]{scrbook}
+			  
+% ------------------------------ input tex files ----------------------------- %
+\input{preamble/settings.tex}
+\input{preamble/cover.tex} % \makecover
+\input{preamble/usrcmds.tex}
+
+% --------------------------------- meta info -------------------------------- %
+\title{Title of Conference}
+\author{First Last}
+
+% ---------------------------------------------------------------------------- %
+%                                   document                                   %
+% ---------------------------------------------------------------------------- %
+\begin{document}
+	
+% ----------------------------------- cover ---------------------------------- %
+% \includepdf{lib/cover.pdf}
+\makecover
+
+% ------------------------------- back of cover ------------------------------ %
+\thispagestyle{empty}
+~\vfill
+
+\begin{center}
+	This is a simple booklet generated using the template at:\\ \url{https://github.com/zfengg/Booklet}
+\end{center}
+
+\newpage
+
+% ----------------------------- table of contents ---------------------------- %
+\tableofcontents
+
+% ----------------------------------- about ---------------------------------- %
+\chapter{About}
+
+{\small \textcolor{myblue}{This is a sample conference booklet for which this \LaTeX{} template was generated. Short documentations can be found at:\\ \url{https://github.com/zfengg/Booklet}}
+
+\section{Title of the conference}
+
+Some descriptions of the conference. The aim of this conference is to bring together scientists to discuss and exchange ideas on the cutting edge research on the area of ABC. The topics will include, for example, E on F, H, and I. It is in honor of Professor K.
+
+\section{Scientific committee}
+\begin{itemize}
+	\item First Last (Affiliation)
+	
+	\item First Last (Affiliation)
+	
+	\item First Last (Affiliation)
+\end{itemize}
+
+\section{Organizing committee}
+\begin{itemize}
+	\item First Last (Affiliation)
+	
+	\item First Last (Affiliation)
+	
+	\item First Last (Affiliation)
+\end{itemize}
+
+\section{Enquiry}
+
+\begin{description}
+	\item[Email:] example@domain.com
+	
+	\item[Website:] \url{https://example.com}
+	
+	\item[Address:] Department, University, City, Country
+\end{description}
+
+\newpage
+
+\section{Invited speakers}
+\begin{itemize}
+	\item First Last
+	
+	\item First Last
+	
+	\item First Last
+\end{itemize}
+
+% --------------------------------- timetable -------------------------------- %
+\chapter{Timetable}
+
+{\LARGE {\bfseries Venue:} Room 123 at Hall ABC.}
+
+\section{11 December 2023, Monday}
+\begin{longtable}{|C{0.15\textwidth}|C{0.7\textwidth}|}
+	\hline
+	\rowBreak{8:30--9:00}{Registration}
+	\rowBreak{9:00--9:10}{Welcome remarks}
+	\rowTalk{9:10--10:05}{Speaker}{Affiliation}{Title of the talk}
+	\rowThick{}{Coffee Break/\textbf{Registration}}
+	\rowTalk{14:00--14:30}{Speaker}{Affiliation}{Title of the talk}
+	\rowTalk{14:30--15:05}{Speaker}{Affiliation}{Title of the talk}
+	\rowBreak{15:05--15:30}{Coffee}
+	\rowTalk{15:30-16:00}{Speaker}{Affiliation}{Title}
+	\rowTalk{16:00-17:10}{Speaker}{Affiliation}{Title}
+	\rowEvent{17:10--19:30}{Poster session with Wine \& Cheese}
+\end{longtable}
+
+
+\section{12 December 2023, Tuesday}
+\begin{longtable}{|C{0.15\linewidth}| C{0.04\linewidth}|  C{0.3\linewidth} C{0.0\linewidth} C{0.4\linewidth}|}\hline
+	\tablebreak{8:30--9:00}{Registration}
+	\tablebreak{9:00--9:10}{Welcome remarks}
+	\KL{9:10--10:05}{Speaker}{Affiliation}{Title}
+	\IT{10:05--10:30}{Speaker}{Affiliation}{Title}
+	\tablebreak{10:30--11:00}{Coffee}
+	\IS{11:00--11:40}{Speaker}{Affiliation}{Title}
+	\CT{11:40--12:45}{Speaker}{Affiliation}{Title}
+	\tablebreak{12:45--14:00}{Lunch}
+	\CT{14:00--14:30}{Speaker}{Affiliation}{Title}
+	\IS{14:30--15:05}{Speaker}{Affiliation}{Title}
+	\tablebreak{15:05--15:30}{Coffee}
+	\CT{15:30-16:00}{Speaker}{Affiliation}{Title}
+	\IS{16:00-17:10}{Speaker}{Affiliation}{Title}
+	\eventtype{17:10--19:30}{Poster session with Wine \& Cheese}
+\end{longtable}
+
+
+\section{13 December 2023, Wednesday}
+\begin{longtable}{|C{0.15\linewidth}| C{0.04\linewidth}|  C{0.3\linewidth} C{0.0\linewidth} C{0.4\linewidth}|}\hline
+	\tablebreak{8:30--9:00}{Registration}
+	\tablebreak{9:00--9:10}{Welcome remarks}
+	\Talk{9:10--10:05}{Speaker}{Affiliation}{Title of the talk}
+	\Talk{10:05--10:30}{Speaker}{Affiliation}{A long title of the talk}
+	\tablebreak{10:30--11:00}{Coffee}
+	\Talk{11:00--11:40}{Speaker}{Affiliation}{A very very very very very very very very very very very very long titile of the talk}
+	\Talk{11:40--12:45}{Speaker}{Affiliation}{Title of the talk}
+	\tablebreak{12:45--14:00}{Lunch}
+	\Talk{14:00--14:30}{Speaker}{Affiliation}{Title of the talk}
+	\Talk{14:30--15:05}{Speaker}{Affiliation}{Title of the talk}
+	\tablebreak{15:05--15:30}{Coffee}
+	\TalkBreak{15:30-16:00}{Speaker}{Affiliation}{Title}
+	\Talk{16:00-17:10}{Speaker}{Affiliation}{Title}
+	\eventtype{17:10--19:30}{Poster session with Wine \& Cheese}
+\end{longtable}
+
+
+
+% ----------------------------- list of abstracts ---------------------------- %
+\chapter{List of Abstracts}
+
+\Abstract{Title of the talk}{Speaker}{Affiliation}{%
+	This is the content of a sample abstract. There is an inline math $ a^{2} + b^{2} = c^{2} $. Moreover, we can see some display math
+	\begin{equation*}
+		e^{i\pi} + 1 = 0.
+	\end{equation*}
+	Based on above, we have proved something. This is joint work with someone.\\
+	Then we have the second graph of the abstract. Hello world. Failure is the mother of success. Logistics take you from A to B, while imagination takes you to everywhere. I have a dream that one day everybody is happy. On more thing. Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time. I would rather have thirty minutes of wonderful, than a lifetime of nothing special.
+} % end of Abstract
+
+% abstract with types
+\Abstract[\tagKL]{Title of the talk}{Speaker}{Affiliation}{%
+	This is the content of a sample abstract. There is an inline math $ a^{2} + b^{2} = c^{2} $. Moreover, we can see some display math
+	\begin{equation*}
+		e^{i\pi} + 1 = 0.
+	\end{equation*}
+	Based on above, we have proved something. This is joint work with someone.\\
+	Then we have the second graph of the abstract. Hello world. Failure is the mother of success. Logistics take you from A to B, while imagination takes you to everywhere. I have a dream that one day everybody is happy. On more thing. Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time. I would rather have thirty minutes of wonderful, than a lifetime of nothing special.
+} % end of Abstract
+
+% abstract with type
+\Abstract[\tagIT]{Title of the talk}{Speaker}{Affiliation}{%
+	This is the content of a sample abstract. There is an inline math $ a^{2} + b^{2} = c^{2} $. Moreover, we can see some display math
+	\begin{equation*}
+		e^{i\pi} + 1 = 0.
+	\end{equation*}
+	Based on above, we have proved something. This is joint work with someone.\\
+	Then we have the second graph of the abstract. Hello world. Failure is the mother of success. Logistics take you from A to B, while imagination takes you to everywhere. I have a dream that one day everybody is happy. On more thing. Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time. I would rather have thirty minutes of wonderful, than a lifetime of nothing special.
+} % end of Abstract
+
+% abstract with type
+\Abstract[\tagCT]{Title of the talk}{Speaker}{Affiliation}{%
+	This is the content of a sample abstract. There is an inline math $ a^{2} + b^{2} = c^{2} $. Moreover, we can see some display math
+	\begin{equation*}
+		e^{i\pi} + 1 = 0.
+	\end{equation*}
+	Based on above, we have proved something. This is joint work with someone.\\
+	Then we have the second graph of the abstract. Hello world. Failure is the mother of success. Logistics take you from A to B, while imagination takes you to everywhere. I have a dream that one day everybody is happy. On more thing. Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time. I would rather have thirty minutes of wonderful, than a lifetime of nothing special.
+} % end of Abstract
+
+% abstract with type
+\Abstract[\tagIS]{Title of the talk}{Speaker}{Affiliation}{%
+	This is the content of a sample abstract. There is an inline math $ a^{2} + b^{2} = c^{2} $. Moreover, we can see some display math
+	\begin{equation*}
+		e^{i\pi} + 1 = 0.
+	\end{equation*}
+	Based on above, we have proved something. This is joint work with someone.\\
+	Then we have the second graph of the abstract. Hello world. Failure is the mother of success. Logistics take you from A to B, while imagination takes you to everywhere. I have a dream that one day everybody is happy. On more thing. Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time. I would rather have thirty minutes of wonderful, than a lifetime of nothing special.
+} % end of Abstract
+
+\Abstract{Title of the talk}{Speaker}{Affiliation}{%
+	This is the content of a sample abstract. There is an inline math $ a^{2} + b^{2} = c^{2} $. Moreover, we can see some display math
+	\begin{equation*}
+		e^{i\pi} + 1 = 0.
+	\end{equation*}
+	Based on above, we have proved something. This is joint work with someone.\\
+	Then we have the second graph of the abstract. Hello world. Failure is the mother of success. Logistics take you from A to B, while imagination takes you to everywhere. I have a dream that one day everybody is happy. On more thing. Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time. I would rather have thirty minutes of wonderful, than a lifetime of nothing special.
+} % end of Abstract
+
+
+% --------------------------- list of participants --------------------------- %
+\chapter{List of Participants}
+\begingroup
+\rowcolors{1}{gray!25}{white} % alternating colors of rows 
+\begin{longtable}{p{0.35\linewidth}p{0.4\linewidth}}
+	\hline
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+	\Participant{First Last}{Affiliation}
+\end{longtable}
+\endgroup
+
+
+
+% -------------------------------- useful info ------------------------------- %
+\chapter{Useful Information}
+
+\textbf{Location of Lee Shau Kee Building (LSK):} \\
+All the lectures will be held in Lee Shau Kee Bldg., CUHK (see the map).
+
+\section{Transportation from Hotel}
+
+We have arranged 2 coaches from Regal Riverside Hotel to the University (Lee Shau Kee Building) every morning.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		11 Dec 2023 & 12 Dec 2023 & 13 Dec 2023 & 14 Dec 2023 & 15 Dec 2023 \\\hline
+		08:00am & 08:00am & 08:00am & 08:00am & 08:00am \\\hline
+	\end{tabular}
+	\caption*{Coach Timetable}
+\end{table}
+\vskip -2.5em
+In case you miss the coach, you can hire a taxi to the University (Lee Shau Kee Bldg.). The fee is around 70HKD, and it will take about 10 minutes.
+
+
+\section{Meals}
+
+\textbf{Lunch:} We have reserved tables at Benjamin Franklin Center Student Canteen. The cost is covered by the registration fees.
+
+\textbf{Dinner:}
+Besides the canteens and restaurants in the University, there are a lot of restaurants in the New Town Plaza (e.g. at 6/F, 7/F) at the Shatin MTR station.
+
+
+\section{Conference Banquet}
+\textbf{Time:} 7:00pm, 12 December 2012, Wednesday.\\
+\textbf{Venue:} The Bauhinia Room, 3/F, Regal Riverside Hotel.
+
+A coach departure from Car Park, John Fulton Center in the University to Regal Riverside Hotel at 5:30pm. All the participants’ families are welcome to join us.
+
+
+\section{Half Day Free}
+
+There will be a half day free on 13 December 2012, Thursday. You are welcome to join our arranged activities.
+
+\section{Map}
+
+The VENUE building overlooks the SEA and is next to the Village Foo: Sunshine Hotel. The address is No 1, Rd 2, City, Country, and can be reached by:
+
+\begin{itemize}
+	\item \textbf{Subway:} Red line, L1, station University ABC.
+	\item \textbf{Bus:} lines V2, 3, 5, 7, 11, 13.
+	\item \textbf{Tram:} line 4, stop Fantastic Hotel.
+\end{itemize}
+
+\vskip 10em
+
+\begin{center}
+	\Large\ttfamily	Map with guides
+\end{center}
+\newpage
+
+
+\section{Other information}
+
+\paragraph{Useful Telephone numbers:}
+\begin{itemize}
+	\item Emergency Services (Police, Fire and Ambulance): 999
+	\item International Airport (24 hours): 1234 5678
+	\item Hotel: 1234 5678
+	\item Department, University: 1234 5678
+\end{itemize}
+
+\paragraph{Facilities at Campus}
+Bank, canteen, supermarket, barber shop and souvenir counter are located at campus. Please refer to the campus map.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Facilities} & \textbf{Address} & \textbf{Opening hours} \\\hline
+		Hang Seng Bank & 1/F, Some Good Center & 9:00am--5:00pm (Mon--Fri) \\\hline
+		
+	 	\rowcolor{\tbc} Some Good Center &   &  \\ 	
+		 \rowcolor{\tbc} Coffee/Fast food/Restaurant & \multirow{-2}{*}{G/F, Some Good Center} & \multirow{-2}{*}{ 7:30am--9:00pm} \\\hline
+		
+		&  & 8:30am--10:00pm (Mon--Fri) \\
+		\multirow{-2}{*}{Shop Supermarket} & \multirow{-2}{*}{LG, Some Good Center} & 8:30am--9:00pm (Sat, Sun, PH) \\\hline
+		\rowcolor{\tbc} Barber shop & G/F, Some Good Center & 10:00am--8:00pm (Mon--Fri) \\\hline
+		Souvenir Counter &	G/F, Some Good Center & 9:00am--5:30 pm (Mon--Fri) \\\hline
+	\end{tabular}
+\end{table}
+
+\newpage
+
+% --------------------------------- sponsors --------------------------------- %
+\chapter{Sponsors}
+
+\begin{itemize} \Large
+	\item  Department, University
+	
+	\item Society of A Country
+	
+\end{itemize}
+
+\vskip 8em
+\begin{center}
+	\Large\ttfamily	Logos of the sponsors
+\end{center}
+
+\vfill
+
+
+% --------------------------------- colosing --------------------------------- %
+\newpage
+\thispagestyle{empty}
+\pagecolor{myblue} % colored background
+~
+
+\end{document}
