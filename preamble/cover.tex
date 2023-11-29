@@ -4,13 +4,13 @@
 \newcommand{\COVERPAGE}{%
 	~\vskip 8em
 	\sffamily
-	{\fontsize{31}{40}\selectfont\selectfont\bfseries International Conference on\\[5mm]
+	{\fontsize{35}{50}\selectfont\selectfont\color{colorMain} International Conference on\\[5mm]
 		Research Area \& Related Topics\\[15mm]
 	}
 		
 	{\huge 11--15 December, 2023 \\[5mm]}
 	
-	{\huge Department, University \\[15mm]}
+	{\huge Department, University \\[30mm]}
 
 	\begin{center}
 		\Huge\ttfamily Some Image
@@ -26,7 +26,7 @@
 			\node (A) at (current page.south west) {};
 			\node (B) at ([xshift=20mm] current page.north west) {};
 			\node (C) at ([xshift=20mm] current page.north west) {};
-			\fill[primarycolor] (A) rectangle (B);
+			\fill[colorMain] (A) rectangle (B);
 			\node[anchor=north west,outer sep=5mm,inner sep=0pt] at (C) {\parbox{15cm}{\COVERPAGE}};
 	\end{tikzpicture}}
 	\hbox{}\newpage
