@@ -20,7 +20,23 @@
 \setlength\evensidemargin{\oddsidemargin}
 
 % ------------------------------ header & footer ----------------------------- %
-\pagestyle{plain}
+%\pagestyle{plain}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\fancyhf{}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyhead{}
+\renewcommand{\chaptermark}[1]{\markboth{}{\color{colorMain}\itshape{#1}}}
+%\renewcommand{\sectionmark}[1]{\markright{\color{colorMain}{#1}}{}}
+\renewcommand{\sectionmark}[1]{}
+\fancyhead[RE,LO]{}
+\fancyhead[LE,RO]{\nouppercase{\rightmark}}
+%\usepackage{xpatch}
+%\xpretocmd\headrule{\color{colorMain}}{}{\PatchFailed}
+\renewcommand{\headrulewidth}{1pt}
+\let\headruleORIG\headrule
+\renewcommand{\headrule}{\color{colorMain} \headruleORIG}
 
 % ----------------------------------- lists ---------------------------------- %
 \usepackage{caption}
