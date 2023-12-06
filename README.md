@@ -22,6 +22,10 @@ A simple TeX template to create booklets for conferences.
 - You can change the formats and styles by adjusting the settings in `preamble/settings.tex`.
 - The commands for fast-typing are stored in `preamble/usrcmds.tex`. Users can define their own commands in this file.
 
+## Features
+- Simple with crystal clear code structure and comments
+- 中文支持
+
 ---
 
-> Any issues or pull requests are welcome.
+> All issues or pull requests are welcome.
