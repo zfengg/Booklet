@@ -5,7 +5,7 @@ A simple TeX template to create booklets for conferences.
 ## Install
 
 1.  Download or clone this repository.
-2.  Compile `booklet.tex` with `xelatex`. Then you will get the [demo](booklet.pdf).
+2.  Compile `booklet.tex` with `XeLaTeX`. Then you will get the [demo](booklet.pdf).
 
 ### Directory structure
 
